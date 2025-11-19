@@ -59,6 +59,22 @@ body {
     line-height: 1.6;
     min-height: 100vh;
     transition: background-color 0.3s ease, color 0.3s ease;
+    width: 100%;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+li,
+div {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    max-width: 100%;
 }
 
 /* Theme Toggle */
@@ -481,6 +497,13 @@ a {
     position: relative;
     padding-left: 20px;
     border-left: 2px solid rgba(255, 255, 255, 0.05);
+    width: 100%;
+}
+
+.timeline-content {
+    width: 100%;
+    overflow: visible;
+    /* Allow content to show */
 }
 
 .timeline-item {
@@ -507,6 +530,8 @@ a {
     font-size: 1.1rem;
     font-weight: 700;
     color: var(--text-main);
+    word-break: break-word;
+    line-height: 1.4;
 }
 
 .company {
@@ -827,16 +852,166 @@ a {
 @media (max-width: 900px) {
     .app-container {
         grid-template-columns: 1fr;
-        padding: 20px;
+        padding: 10px;
+        gap: 20px;
+        width: 100%;
+        /* overflow-x: hidden; Removed to fix sticky */
+        padding-top: 135px;
+        /* Increased space a bit more */
     }
 
     .sidebar {
-        position: relative;
-        top: 0;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        width: auto;
+        z-index: 1000;
+        height: auto;
+        overflow-y: visible;
+        margin-bottom: 0;
+    }
+
+    .profile-card {
+        padding: 10px 10px 10px 5px;
+        /* Reduced left padding to move icon left */
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
+        border-radius: 50px;
+        background: #073042;
+        /* Solid background to prevent bleed-through */
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        z-index: 1002;
+        /* Ensure it's above everything */
+        height: 60px;
+        /* Fixed height for consistency */
+    }
+
+    .profile-pic-placeholder {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        /* Force size */
+        min-height: 36px;
+        /* Force size */
+        font-size: 0.8rem;
+        margin-bottom: 0;
+        margin-right: 12px;
+        border-width: 1px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .profile-pic-placeholder .initials {
+        font-size: 0.8rem;
+        /* Force font size on inner element */
+        line-height: 1;
+        margin-top: 1px;
+        /* Optical alignment */
+    }
+
+    .profile-header {
+        margin-bottom: 0;
+        margin-right: auto;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        /* Prevent name overflow */
+        height: 100%;
+        /* Full height for alignment */
+    }
+
+    .name {
+        font-size: 0;
+        /* Hide original text to prevent duplication */
+        line-height: 1;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+    }
+
+    .name br {
+        display: none;
+    }
+
+    .name::after {
+        content: " YASSINE";
+        display: inline;
+        margin-left: 4px;
+    }
+
+    .title {
+        display: none;
+    }
+
+    .main-nav {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        gap: 5px;
+        margin: 0;
+        width: auto;
+    }
+
+    .nav-item {
+        width: auto;
+        padding: 8px;
+        font-size: 1.1rem;
+        /* Larger icons */
+        border-radius: 50%;
+        /* Circular buttons */
+        aspect-ratio: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-item span {
+        display: none;
+        /* Hide text on mobile, show only icons */
+    }
+
+    .nav-item i {
+        margin: 0;
+    }
+
+    .contact-info,
+    .sidebar-footer {
+        display: none;
+        /* Hide contact info in sticky header */
     }
 
     .grid-2-col {
         grid-template-columns: 1fr;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .glass-panel {
+        padding: 20px;
+        /* Reduced from 30px */
+    }
+
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    span,
+    li,
+    div {
+        overflow-wrap: anywhere;
+        /* Stronger wrapping */
     }
 }
 
